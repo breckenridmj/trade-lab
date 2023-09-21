@@ -83,7 +83,7 @@ const Auth = () => {
                                 value={password}
                             />
                         </div>
-                        <button onClick={variant === 'login' ? login: register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+                        <button onClick={variant === 'login' ? login: register} className= "bg-[#353b50] py-3 text-white rounded-md w-full mt-10 hover:bg-[#292f42] transition">
                             {variant === 'login' ? 'Login' : 'Sign up'}
                         </button>
                         <div className="flex flex-row items-center gap-4 mt-8 justify-center">
@@ -126,7 +126,7 @@ const Auth = () => {
                         <p className="text-neutral-500 mt-12">
                             {variant === 'login' ? 'First time using Hidden Trader?' : 'Already have an account?'}
                             <span onClick={toggleVariant} className="text-white nl-1 hover:underline cursor-pointer">
-                                {variant === 'login' ? 'Create an account' : 'Login'}
+                                {variant === 'login' ? ' Create an account' : ' Login'}
                             </span>
                         </p>
                     </div>

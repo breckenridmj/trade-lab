@@ -1,12 +1,14 @@
-import NavbarItem from "./NavbarItem";
-import MobileMenu from "./MobileMenu";
-import AccountMenu from "./AccountMenu";
+
+import ToolItemMenu from "./ToolItemMenu";
+
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { BiCog } from "react-icons/bi";
 
+import ToggleSwitch from "./ToggleSwitch";
 
-const Navbar = () => {
+
+const ToolNavbar = () => {
     
     const [showToolMenu, setShowToolMenu] = useState(false);
 
@@ -14,69 +16,32 @@ const Navbar = () => {
         setShowToolMenu((current) => !current);
     }, []);
 
+    
+    
+    
 
     return (
-        <div className="w-full fixed z-40">
-            <div
-                className="
-                    px-4 
-                    md:px-12 
-                    py-6 
-                    flex 
-                    flex-row 
-                    items-center 
-                    transition 
-                    duration-500
-                    bg-[#353b50]
-                    bg-opacity-90
-                "
-            >
-                <img className="h-6 lg:h-10" src="/images/HiddenLogo.png" alt="Logo" />
-                <div
-                    className="
-                        flex-row
-                        ml-8
-                        gap-7
-                        hidden
-                        lg:flex
-                    "
-                >
-                    <NavbarItem label="Dashboard" />
-                    <NavbarItem label="Refresh Data" />
-                    <NavbarItem label="Edit" />
-                    <NavbarItem label="Calendar P&L" />
-                    <NavbarItem label="Resources" />
-                    <NavbarItem label="Settings" />
-                </div>
-                <div 
-                    onClick={toggleMobileMenu}
-                    className="
-                        lg:hidden
-                        flex
-                        flex-row
-                        items-center
-                        gap-2
-                        ml-8
-                        cursor-pointer
-                        relative
-                    "
-                >
-                    <GiHamburgerMenu className="text-white transition" />
-                    <MobileMenu visible={showMobileMenu} />
-                </div>
-                <div className="flex flex-row ml-auto gap-7 items-center">
-                    <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-                        <BsBell />
+        <div className="">
+            <div className="bg-[#353b50] py-2 px-4 items-center flow-root">
+                <div className="float-left z-41">
+                    <div className=" text-gray-200 flex flex-row items-center px-4 py-2 ">
+                        <h2>Dark Pool</h2>          
                     </div>
-                    <div className="text-gray-200 hover:text-gray-300 flex flex-row items-center gap-2 cursor-pointer relative">
-                        <CgProfile onClick={toggleAccountMenu} className="text-white transition cursor-pointer" size={'2em'} />
-                        <AccountMenu visible={showAccountMenu} />
-                    </div>
+                </div>
 
+                <div className="float-right z-41">
+                    <div className="text-gray-200 hover:text-gray-300 flex flex-row items-center gap-1 cursor-pointer relative">
+                        
+
+                    
+                        <ToggleSwitch  />
+                        <BiCog onClick={toggleToolMenu} className="transition cursor-pointer" size={'1.75em'}  />
+                        <ToolItemMenu visible={showToolMenu} />
+                    </div>
                 </div>
             </div>
         </div>
     )   
 }
 
-export default Navbar;
+export default ToolNavbar;

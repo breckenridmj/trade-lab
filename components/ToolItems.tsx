@@ -1,18 +1,19 @@
 import DarkPool from "./Tables&Graphs/DarkPool"
 import Paper from '@mui/material/Paper';
+import ToolNavbar from "./ToolNavbar";
 
 
 
 const ToolItems = () =>  {
     return(
         <div className="MuiPaper-root" >
-            <Paper elevation={3}>
+            <Paper className="resize rounded-md" elevation={3}>
                 <div>
-                    <h2>Dark Pool Orders</h2>
+                    <ToolNavbar />
                 </div>
-                <p>{item}</p>
-                   
-            
+                <div>
+                    <DarkPool />
+                </div>
             </Paper>
         </div>
     )

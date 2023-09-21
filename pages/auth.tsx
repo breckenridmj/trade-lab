@@ -51,7 +51,7 @@ const Auth = () => {
         <div className="relative h-full w-full bg-[url('/images/wp.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
             <div className="bg-black w-full h-full lg:bg-opacity-50">
                 <nav className="px-12 py-5">
-                    <img src="/images/hiddentraderlogo.png" alt="Logo" className="h-12"/>
+                    <img className="h-6 lg:h-10" src="/images/HiddenLogo.png" alt="Logo" />
                 </nav>
                 <div className="flex justify-center">
                     <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">

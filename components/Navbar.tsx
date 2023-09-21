@@ -25,7 +25,7 @@ const Navbar = () => {
             <div
                 className="
                     px-4 
-                    md:px-16 
+                    md:px-12 
                     py-6 
                     flex 
                     flex-row 
@@ -36,7 +36,7 @@ const Navbar = () => {
                     bg-opacity-90
                 "
             >
-                <img className="h-4 lg:h-7" src="/images/hiddentraderlogo.png" alt="Logo" />
+                <img className="h-6 lg:h-10" src="/images/HiddenLogo.png" alt="Logo" />
                 <div
                     className="
                         flex-row

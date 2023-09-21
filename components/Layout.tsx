@@ -3,7 +3,7 @@ import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper'; 
-import DarkPool from "./DarkPool";
+import ToolItems from "./ToolItems";
 
 
 const Layout = () =>  {
@@ -22,7 +22,8 @@ const Layout = () =>  {
           <Grid container paddingTop={14} paddingLeft={2} paddingRight={2} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
             {Array.from(Array(6)).map((_, index) => (
               <Grid xs={2} sm={4} md={4} key={index}>
-                <Item>xs=2</Item>
+                {/* <Item>xs=2</Item> */}
+                <ToolItems />
               </Grid>
             ))}
           </Grid>

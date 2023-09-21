@@ -1,53 +1,35 @@
 import * as React from "react";
-import Paper from "@mui/material/Paper";
-import Grid from "@mui/material/Grid";
+import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+import { experimentalStyled as styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper'; 
+import DarkPool from "./DarkPool";
 
 
 const Layout = () =>  {
-  const classes = {
-    root: {
-      flexGrow: 1
-    },
-    paper: {
-      padding: 100,
-      textAlign: "center",
-      color: "white",
-      fontFamily: "Roboto"
-    }
-  }
+  
+  const Item = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(12),
+    textAlign: 'center',
+    color: "white",
+    background: '#353b50',
+    fontFamily: "Roboto",
+  }));
   
   return(
-    
-    <div style={classes.root}>
-      <Grid container spacing={1} paddingTop={11} paddingLeft={2} paddingRight={2}>
-        {/*Create items with different breakpoints */}
-        {/*For example,This item will be 12 units wide on extra small screens */}       
-        <Grid item xs={12}>
-          <Paper className=" bg-[#353b50]" style={classes.paper}>Dark Pool Orders</Paper>
-        </Grid>
-        {/*This item will be 12 units on extra small screens */}
-        {/*But will be 6 units on small screens */}
-        <Grid item xs={12} sm={6}>
-          <Paper className=" bg-[#353b50]" style={classes.paper}>Time & Sales</Paper>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <Paper className=" bg-[#353b50]" style={classes.paper}>Top Market Orders</Paper>
-        </Grid>
-        <Grid item xs={9} sm={4}>
-          <Paper className=" bg-[#353b50]" style={classes.paper}>Gamma Exposure</Paper>
-        </Grid>
-        <Grid item xs={6} sm={4}>
-          <Paper className=" bg-[#353b50]" style={classes.paper}>Vanna Exposure</Paper>
-        </Grid>
-        <Grid item xs={6} sm={4}>
-          <Paper className=" bg-[#353b50]" style={classes.paper}>Speed Exposure</Paper>
-        </Grid>
-        <Grid item xs={12} sm={12}>
-          <Paper className=" bg-[#353b50]" style={classes.paper}>Unusual Options</Paper>
-        </Grid>
-      </Grid>
+    <div className = "flex-grow-1 overflow-hidden h-full w-full">
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container paddingTop={14} paddingLeft={2} paddingRight={2} spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
+            {Array.from(Array(6)).map((_, index) => (
+              <Grid xs={2} sm={4} md={4} key={index}>
+                <Item>xs=2</Item>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
     </div>
   )
 }
 export default Layout;
 
+/*className=" bg-[#353b50]"*/

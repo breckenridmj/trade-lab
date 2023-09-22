@@ -1,7 +1,9 @@
+"use client";
+
 
 import { Column, Id } from "../types";
 import PlusIcon from "./icons/PlusIcon"
-import { useMemo, useState } from "react";
+import { useMemo, useState,useEffect } from "react";
 import ColumnContainer from "./ColumnContainer";
 import { 
     DndContext, 
@@ -14,9 +16,15 @@ import {
     useSensors, 
 } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
+import { createPortal } from "react-dom";
+import ReactDOM from 'react-dom';
+
 
 
 function KanbanBoard() {
+
+    const [mounted, setMounted] = useState(false);
+    
     const [ columns, setColumns ] = useState<Column[]>([]);
     console.log(columns);
 
@@ -77,6 +85,17 @@ function KanbanBoard() {
                         Add Column
                     </button>
                 </div>
+                {createPortal(
+                <DragOverlay>
+                    {activeColumn && (
+                        <ColumnContainer
+                            column={activeColumn}
+                            deleteColumn={deleteColumn}
+                        />
+                    )}
+                </DragOverlay>,
+                document.body
+                )}
             </DndContext>
         </div>
     );

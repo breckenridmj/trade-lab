@@ -21,7 +21,7 @@ interface Props {
 function ColumnContainer(props: Props) {
     const { column, deleteColumn } = props;
     
-    const { setNodeRef, attributes, listeners, transform, transition } = useSortable({
+    const { setNodeRef, attributes, listeners, transform, transition, isDragging } = useSortable({
         id: column.id,
         data: {
             type: "Column",
@@ -39,6 +39,10 @@ function ColumnContainer(props: Props) {
     const toggleToolMenu = useCallback(() => {
         setShowToolMenu((current) => !current);
     }, []);
+
+    if (isDragging) {
+        return <>hello</>;
+    }
 
     return (
     <div

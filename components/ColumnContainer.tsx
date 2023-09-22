@@ -5,9 +5,13 @@ import ToolItemMenu from "./ToolItemMenu";
 
 import React, { useCallback, useEffect, useState } from 'react';
 
+
 import { BiCog } from "react-icons/bi";
 import ToggleSwitch from "./ToggleSwitch";
 import Trash from "./icons/Trash";
+
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 interface Props {
     column: Column;
@@ -16,6 +20,19 @@ interface Props {
 
 function ColumnContainer(props: Props) {
     const { column, deleteColumn } = props;
+    
+    const { setNodeRef, attributes, listeners, transform, transition } = useSortable({
+        id: column.id,
+        data: {
+            type: "Column",
+            column,
+        },
+    });
+
+    const style = {
+        transition,
+        transform: CSS.Transform.toString(transform),
+    };
 
     const [showToolMenu, setShowToolMenu] = useState(false);
 
@@ -25,6 +42,8 @@ function ColumnContainer(props: Props) {
 
     return (
     <div
+        ref={setNodeRef}
+        style={style}
         className="
         bg-[#353b50]
         w-[650px]
@@ -38,7 +57,10 @@ function ColumnContainer(props: Props) {
     >
         {/* Container title */}
         
-        <div className="bg-[#353b50] py-2 px-4 items-center flow-root rounded-md">
+        <div 
+            {...attributes}
+            {...listeners}
+            className="bg-[#353b50] py-2 px-4 items-center flow-root rounded-md">
                 <div className="float-left z-41">
                     <div className=" text-white font-bold flex text-lg flex-row items-center px-4 py-1 ">
                         <h2>Dark Pool</h2>          

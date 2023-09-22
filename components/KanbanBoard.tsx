@@ -1,14 +1,28 @@
 
 import { Column, Id } from "../types";
 import PlusIcon from "./icons/PlusIcon"
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import ColumnContainer from "./ColumnContainer";
-import { DndContext } from "@dnd-kit/core";
+import { 
+    DndContext, 
+    DragEndEvent,
+    DragOverEvent,
+    DragOverlay,
+    DragStartEvent,
+    PointerSensor,
+    useSensor,
+    useSensors, 
+} from "@dnd-kit/core";
+import { SortableContext } from "@dnd-kit/sortable";
 
 
 function KanbanBoard() {
     const [ columns, setColumns ] = useState<Column[]>([]);
     console.log(columns);
+
+    const columnsId = useMemo(() => columns.map((col) => col.id), [columns]);
+
+    const [activeColumn, setActiveColumn] = useState<Column | null>(null);
 
     return (
         <div className="
@@ -23,42 +37,46 @@ function KanbanBoard() {
         px-[40px]
         "
         >
-            <DndContext>
-            <div className="m-auto flex gap-2">
-                <div className="flex gap-3">
-                    {columns.map(col => (
-                    // eslint-disable-next-line react/jsx-key
-                    <ColumnContainer 
-                        key={col.id}
-                        column={col} 
-                        deleteColumn={deleteColumn} 
-                    />
-                ))}
+            <DndContext onDragStart={onDragStart}>
+                <div className="m-auto flex gap-2">
+                    <div className="flex gap-3">
+                        <SortableContext items={columnsId}>
+                            {columns.map(col => (
+                            // eslint-disable-next-line react/jsx-key
+                            <ColumnContainer 
+                                key={col.id}
+                                column={col} 
+                                deleteColumn={deleteColumn} 
+                            />
+                            
+                            ))}
+                        </SortableContext>
+                    </div>
+                    
+                    <button
+                        onClick={() => {
+                            createNewColumn();
+                        }}
+                        className="
+                    h-[60px]
+                    w-[650px]
+                    min-w-[350px]
+                    cursor-pointer
+                    rounded-lg
+                    bg-[#353b50]
+                    border-2
+                    p-4
+                    text-white
+                    ring-white
+                    hover:ring-1
+                    flex
+                    gap-2
+                    "
+                    >
+                        <PlusIcon />
+                        Add Column
+                    </button>
                 </div>
-                <button
-                    onClick={() => {
-                        createNewColumn();
-                    }}
-                    className="
-                h-[60px]
-                w-[650px]
-                min-w-[350px]
-                cursor-pointer
-                rounded-lg
-                bg-[#353b50]
-                border-2
-                p-4
-                text-white
-                ring-white
-                hover:ring-1
-                flex
-                gap-2
-                "
-                >
-                    <PlusIcon />
-                    Add Column
-                </button>
-            </div>
             </DndContext>
         </div>
     );
@@ -75,6 +93,14 @@ function KanbanBoard() {
     function deleteColumn(id: Id) {
         const filteredColumns = columns.filter((col) => col.id !== id);
         setColumns(filteredColumns);
+    }
+
+    function onDragStart(event: DragStartEvent) {
+        console.log("Drag Start", event);
+        if (event.active.data.current?.type === "Column") {
+            setActiveColumn(event.active.data.current.column);
+            return;
+        }
     }
 }
 

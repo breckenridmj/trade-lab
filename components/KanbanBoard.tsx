@@ -35,7 +35,7 @@ function KanbanBoard() {
                     }}
                     className="
                 h-[60px]
-                w-[350px]
+                w-[650px]
                 min-w-[350px]
                 cursor-pointer
                 rounded-lg

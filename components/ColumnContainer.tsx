@@ -14,8 +14,8 @@ function ColumnContainer(props: Props) {
     <div
         className="
         bg-[#353b50]
-        w-[350px]
-        h-[500px]
+        w-[650px]
+        h-[300px]
         max-h-[500px]
         rounded-md
         flex

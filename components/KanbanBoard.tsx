@@ -3,6 +3,7 @@ import { Column, Id } from "../types";
 import PlusIcon from "./icons/PlusIcon"
 import { useState } from "react";
 import ColumnContainer from "./ColumnContainer";
+import { DndContext } from "@dnd-kit/core";
 
 
 function KanbanBoard() {
@@ -22,11 +23,13 @@ function KanbanBoard() {
         px-[40px]
         "
         >
+            <DndContext>
             <div className="m-auto flex gap-2">
                 <div className="flex gap-3">
                     {columns.map(col => (
                     // eslint-disable-next-line react/jsx-key
                     <ColumnContainer 
+                        key={col.id}
                         column={col} 
                         deleteColumn={deleteColumn} 
                     />
@@ -56,6 +59,7 @@ function KanbanBoard() {
                     Add Column
                 </button>
             </div>
+            </DndContext>
         </div>
     );
 

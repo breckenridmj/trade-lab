@@ -38,7 +38,7 @@ function ColumnContainer(props: Props) {
                 <DarkPool/>
             </div>
         {/* Column Footer */}
-        <div>Footer</div>
+        <div>{column.title}</div>
 
 
     </div>

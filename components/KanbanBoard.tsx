@@ -1,5 +1,5 @@
-import { title } from "process";
-import { Column } from "../types";
+
+import { Column, Id } from "../types";
 import PlusIcon from "./icons/PlusIcon"
 import { useState } from "react";
 import ColumnContainer from "./ColumnContainer";
@@ -26,7 +26,11 @@ function KanbanBoard() {
                 <div className="flex gap-3">
                     {columns.map(col => (
                     // eslint-disable-next-line react/jsx-key
-                    <ColumnContainer column={col} />
+                    <ColumnContainer 
+                        
+                        column={col} 
+                        deleteColumn={deleteColumn} 
+                    />
                 ))}
                 </div>
                 <button
@@ -63,6 +67,11 @@ function KanbanBoard() {
         };
 
         setColumns([...columns, columnToAdd]);
+    }
+
+    function deleteColumn(id: Id) {
+        const filteredColumns = columns.filter((col) => col.id !== id);
+        setColumns(filteredColumns);
     }
 }
 

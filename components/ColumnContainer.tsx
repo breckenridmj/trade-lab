@@ -1,4 +1,4 @@
-import { Column } from "@/types"
+import { Column, Id } from "@/types"
 import DarkPool from "./Tables&Graphs/DarkPool";
 
 import ToolItemMenu from "./ToolItemMenu";
@@ -15,7 +15,7 @@ interface Props {
 }
 
 function ColumnContainer(props: Props) {
-    const { column } = props;
+    const { column, deleteColumn } = props;
 
     const [showToolMenu, setShowToolMenu] = useState(false);
 
@@ -53,7 +53,22 @@ function ColumnContainer(props: Props) {
                         <ToggleSwitch  />
                         <BiCog onClick={toggleToolMenu} className="transition cursor-pointer" size={'1.75em'}  />
                         <ToolItemMenu visible={showToolMenu} />
-                        <Trash onClick={() => { FcDeleteColumn(column.id)}} />
+                        <button 
+                            onClick={() => {
+                                deleteColumn(column.id);
+                            }}
+                            className="
+                            stroke-white
+                        
+                            hover:text-gray-300
+                            rounded
+                            px-1
+                            py-2
+                        "
+                        >
+                            <Trash />
+                        </button>
+                        
 
                     </div>
                 </div>

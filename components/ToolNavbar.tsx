@@ -37,7 +37,8 @@ const ToolNavbar = () => {
                         <ToggleSwitch  />
                         <BiCog onClick={toggleToolMenu} className="transition cursor-pointer" size={'1.75em'}  />
                         <ToolItemMenu visible={showToolMenu} />
-                        <Trash/>
+                        <Trash onClick={() => { FcDeleteColumn(column.id)}} />
+
                     </div>
                 </div>
             </div>

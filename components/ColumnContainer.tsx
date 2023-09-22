@@ -29,7 +29,7 @@ function ColumnContainer(props: Props) {
         bg-[#353b50]
         w-[650px]
         h-[300px]
-        max-h-[500px]
+        max-h-[300px]
         rounded-md
         flex
         flex-col

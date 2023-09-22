@@ -22,12 +22,11 @@ function KanbanBoard() {
         px-[40px]
         "
         >
-            <div className="m-auto">
+            <div className="m-auto flex gap-2">
                 <div className="flex gap-3">
                     {columns.map(col => (
                     // eslint-disable-next-line react/jsx-key
                     <ColumnContainer 
-                        
                         column={col} 
                         deleteColumn={deleteColumn} 
                     />

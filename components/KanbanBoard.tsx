@@ -15,7 +15,7 @@ import {
     useSensor,
     useSensors, 
 } from "@dnd-kit/core";
-import { SortableContext } from "@dnd-kit/sortable";
+import { SortableContext, arrayMove } from "@dnd-kit/sortable";
 import { createPortal } from "react-dom";
 import ReactDOM from 'react-dom';
 
@@ -32,6 +32,14 @@ function KanbanBoard() {
 
     const [activeColumn, setActiveColumn] = useState<Column | null>(null);
 
+    const sensors = useSensors(
+        useSensor(PointerSensor, {
+            activationConstraint: {
+                distance: 3, //300px
+            },
+        })
+    );
+
     return (
         <div className="
         m-auto
@@ -45,7 +53,7 @@ function KanbanBoard() {
         px-[40px]
         "
         >
-            <DndContext onDragStart={onDragStart}>
+            <DndContext sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd}>
                 <div className="m-auto flex gap-2">
                     <div className="flex gap-3">
                         <SortableContext items={columnsId}>
@@ -120,6 +128,27 @@ function KanbanBoard() {
             setActiveColumn(event.active.data.current.column);
             return;
         }
+    }
+
+    function onDragEnd(event: DragEndEvent) {
+        const {active, over} = event;
+        if (!over) return;
+
+        const activeColumnId = active.id;
+        const overColumnId = over.id;
+
+        if (activeColumnId === overColumnId) return;
+
+        setColumns( (columns) => {
+            const activeColumnIndex = columns.findIndex(
+                (col) => col.id === activeColumnId
+            );
+            const overColumnIndex = columns.findIndex(
+                    (col) => col.id === overColumnId
+            );  
+            
+            return arrayMove(columns, activeColumnIndex, overColumnIndex);
+        });
     }
 }
 

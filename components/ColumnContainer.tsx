@@ -21,7 +21,7 @@ interface Props {
 function ColumnContainer(props: Props) {
     const { column, deleteColumn } = props;
     
-    const { setNodeRef, attributes, listeners, transform, transition, isDragging } = useSortable({
+    const { setNodeRef, attributes, listeners, transform, transition, isDragging, onDrag } = useSortable({
         id: column.id,
         data: {
             type: "Column",
@@ -41,7 +41,22 @@ function ColumnContainer(props: Props) {
     }, []);
 
     if (isDragging) {
-        return <>hello</>;
+        return <div ref={setNodeRef} 
+                    style={style}
+                    className="
+                        bg-[#353b50]
+                        w-[650px]
+                        h-[300px]
+                        max-h-[300px]
+                        rounded-md
+                        flex
+                        flex-col
+                        text-white
+                        opacity-40
+                        border-2
+                        border-white-500
+                        ">
+                    </div>;
     }
 
     return (

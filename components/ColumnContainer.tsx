@@ -84,7 +84,7 @@ function ColumnContainer(props: Props) {
         <div 
             {...attributes}
             {...listeners}
-            className="bg-[#353b50] py-2 px-4 items-center flow-root rounded-md">
+            className="bg-[#353b50] py- px-4 items-center flow-root rounded-md">
                 <div className="float-left z-41">
                     <div className=" text-white font-bold flex text-lg flex-row items-center px-4 py-1 ">
                         <h2>Dark Pool</h2>          

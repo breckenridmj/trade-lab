@@ -23,7 +23,7 @@ import ReactDOM from 'react-dom';
 
 function KanbanBoard() {
 
-    const [mounted, setMounted] = useState(false);
+    
     
     const [ columns, setColumns ] = useState<Column[]>([]);
     console.log(columns);
@@ -39,6 +39,14 @@ function KanbanBoard() {
             },
         })
     );
+
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+if (!mounted)return null;
 
     return (
         <div className="

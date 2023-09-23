@@ -12,6 +12,7 @@ import Trash from "./icons/Trash";
 
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import TextField from '@mui/material/TextField';
 
 interface Props {
     column: Column;
@@ -39,6 +40,10 @@ function ColumnContainer(props: Props) {
     const toggleToolMenu = useCallback(() => {
         setShowToolMenu((current) => !current);
     }, []);
+
+    const [Ticker, setTicker] = React.useState('Spy');
+
+   
 
     if (isDragging) {
         return <div ref={setNodeRef} 
@@ -90,7 +95,36 @@ function ColumnContainer(props: Props) {
                     <div className="text-gray-200 hover:text-gray-300 flex flex-row items-center gap-1 cursor-pointer relative">
                         
 
-                    
+                        <TextField 
+                            id="outlined-basic" 
+                            style = {{width: 80}}
+                            variant="standard" 
+                            defaultValue="Spy"
+                            
+                            size="small"
+                            InputProps={{ 
+                                disableUnderline: true
+                                
+                            }}
+                            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                                setTicker(event.target.value);
+                            }}
+
+                            
+                            sx={{
+                                '.MuiInputBase-input': { 
+                                    fontSize: '17px', 
+                                    color: 'white',
+                                    textAlign: 'center',
+                                    background: "#353b50",
+                                    border: 'solid 2px #ffffff',
+                                    borderRadius: "5rem",
+                                    fontWeight: 'bold'
+                                },
+                                mr: 3
+                            }}
+                           
+                        />
                         <ToggleSwitch  />
                         <BiCog onClick={toggleToolMenu} className="transition cursor-pointer" size={'1.75em'}  />
                         <ToolItemMenu visible={showToolMenu} />

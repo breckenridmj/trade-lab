@@ -66,15 +66,21 @@ const MinMaxLayout: React.FC = () => {
     
   
     setLayout(prevLayout => prevLayout.concat(newItem));
+
+    
   }
-  
   
   function handleDeleteItem(itemId: string) {
-    console.log('Deleting item with ID:', itemId);
     setLayout(prevLayout => prevLayout.filter(item => item.i !== itemId));
+
+    
   }
+  
 
   return (
+
+    
+
     <React.Fragment>
       <button
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold mt-24 py-2 px-4 rounded"
@@ -89,17 +95,17 @@ const MinMaxLayout: React.FC = () => {
           <div
             key={item.i}
             data-grid={item}
-            className="bg-blue-300 text-center relative"
+            className="bg-[#353b50] text-center relative"
           >
             <span className="inline-block p-4">{item.i}</span>
             <button
-              onClick={() => handleDeleteItem(item.i)}
+              onClick={(onClick) => handleDeleteItem(item.i)}
               className="absolute top-0 right-0 m-2 text-red-500"
             >
               Delete
-            </button>
+            </button >
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-5 h-5 bg-black"></div>
+              <div className="w-5 h-5">DATA</div>
             </div>
           </div>
         ))}

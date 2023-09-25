@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* styles/globals.css */
+@import "~react-resizable/css/styles.css";
+
 
 body {
   @apply bg-[#292f42] h-full overflow-x-hidden;

@@ -7,6 +7,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { BsBell } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 
+
 const TOP_OFFSET = 66;
 
 const Navbar = () => {

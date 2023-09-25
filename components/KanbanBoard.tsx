@@ -59,6 +59,7 @@ if (!mounted)return null;
         overflow-x-auto
         overflow-y-auto
         px-[40px]
+        100vw
         "
         >
             <DndContext sensors={sensors} onDragStart={onDragStart} onDragEnd={onDragEnd}>

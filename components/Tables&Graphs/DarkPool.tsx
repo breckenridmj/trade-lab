@@ -25,8 +25,8 @@ const DarkPool = () => {
 
     return (
         <div>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+            <TableContainer component={Paper} style={{ maxHeight: '100%', overflow: 'auto' }}>
+                <Table size="small" aria-label="a dense table">
                     <TableHead>
                         <TableRow>
                             <TableCell>TIMESTAMP</TableCell>
@@ -40,7 +40,7 @@ const DarkPool = () => {
                         {rows.map((row) => (
                             <TableRow
                                 key={row.TIMESTAMP}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                
                             >
                                 <TableCell component="th" scope="row">
                                     {row.TIMESTAMP}

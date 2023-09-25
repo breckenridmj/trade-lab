@@ -5,3 +5,11 @@ export type Column = {
   title: string;
 };
 
+export type Position = {
+  xRate: number;
+  yRate: number;
+};
+export type Size = {
+  height: number;
+  width: number;
+};

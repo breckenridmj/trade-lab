@@ -1,9 +1,9 @@
 // pages/index.tsx
 import React, { useState } from 'react';
-import GridContainer from '@/components/grid/GridContainer';
-import AddElementButton from '@/components/grid/AddElementButton';
-import ResizableElement from '@/components/grid/ResizableElement';
-import DraggableElement from '@/components/grid/DraggableElement';
+import GridContainer from '@/components/test-original/GridContainer';
+import AddElementButton from '@/components/test-original/AddElementButton';
+import ResizableElement from '@/components/test-original/ResizableElement';
+import DraggableElement from '@/components/test-original/DraggableElement';
 
 
 const Home: React.FC = () => {
